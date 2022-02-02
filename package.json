@@ -5,10 +5,13 @@
   "main": "server/server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "cd server && npm start",
-    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "startprod": "cd server && npm start",
+    "startdev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "createDB": "node ./server/db/CreateThoughtsTable.js",
+    "seed": "node ./server/db/LoadThoughts.js",
+    "cloudDB": "node ./server/db/CreateThoughtsTable.js && node ./server/db/LoadThoughts.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +20,6 @@
     "if-env": "^1.0.4"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.3.0"
   }
 }
