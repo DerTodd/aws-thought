@@ -5,7 +5,7 @@ const fs = require('fs');
 
 AWS.config.update({
     region: "us-east-2",
-    endpoint: "http://localhost:8000"
+    //endpoint: "http://localhost:8000" removed to load to Cloud
   });
   const dynamodb = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
 

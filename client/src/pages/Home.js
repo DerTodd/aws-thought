@@ -4,8 +4,23 @@ import ThoughtForm from '../components/ThoughtForm';
 
 const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [thoughts, setThoughts] = useState([]);
-
+  const [thoughts, setThoughts] = useState([]); //Array is empty so fetch only gets invoked once when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      //use a try catch incase the service call doesn't work
+      try {
+        const res = await fetch('/users');
+        const jsonData = await res.json();
+        // sort the array by createdAt property ordered by descending values
+        const data = jsonData.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
+        setThoughts([...data]);
+        setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
   return (
     <main>
       <div className="flex-row justify-space-between">

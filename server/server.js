@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const routes = require('./routes');
+const path = require('path');
 //const userRoutes = require('./routes/user-routes');
 
 // express middleware, used to be bodyparser
