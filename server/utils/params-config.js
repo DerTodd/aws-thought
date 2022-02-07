@@ -8,7 +8,8 @@ const params = fileName => {
     const imageParams = {
       Bucket: 'user-images-52fff920-da43-407d-9efb-09e7a1b05272',
       Key: `${uuidv4()}.${fileType}`,
-      Body: fileName.buffer //temporary and removed by multer
+      Body: fileName.buffer, //temporary and removed by multer
+      ACL: 'public-read' //allow read access to this file
     };
   
     return imageParams;
